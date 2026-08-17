@@ -82,13 +82,15 @@ const bookCount = document.getElementById("book-count");
 let selectedCategory = "All";
 
 function renderBooks() {
-    const searchTerm = searchInput.value.toLowerCase().trim();
-
+const searchTerm = searchInput.value
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, " ");
+    const normalizedSearch = searchTerm.replace(/[^a-z0-9\s]/g, "");
     const filteredBooks = books.filter(book => {
         const matchesSearch =
-            book.title.toLowerCase().includes(searchTerm) ||
-            book.author.toLowerCase().includes(searchTerm);
-
+        book.title.toLowerCase().replace(/[^a-z0-9\s]/g, "").includes(normalizedSearch) ||
+book.author.toLowerCase().replace(/[^a-z0-9\s]/g, "").includes(normalizedSearch);
         const matchesCategory =
             selectedCategory === "All" ||
             book.category === selectedCategory;
@@ -162,7 +164,12 @@ function borrowBook(event) {
 }
 
 searchInput.addEventListener("input", renderBooks);
-
+searchInput.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        searchInput.value = "";
+        renderBooks();
+    }
+});
 filters.forEach(filter => {
     filter.addEventListener("click", () => {
         filters.forEach(item => item.classList.remove("active"));
