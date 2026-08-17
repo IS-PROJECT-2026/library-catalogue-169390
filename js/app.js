@@ -78,7 +78,7 @@ const searchInput = document.getElementById("search-input");
 const filters = document.querySelectorAll(".filter");
 const emptyState = document.getElementById("empty-state");
 const bookCount = document.getElementById("book-count");
-
+const borrowedCount = document.getElementById("borrowed-count");
 let selectedCategory = "All";
 
 function renderBooks() {
@@ -102,7 +102,8 @@ book.author.toLowerCase().replace(/[^a-z0-9\s]/g, "").includes(normalizedSearch)
 
     bookCount.textContent =
         `${filteredBooks.length} book${filteredBooks.length === 1 ? "" : "s"}`;
-
+const borrowed = books.filter(book => !book.available).length;
+borrowedCount.textContent = ` • ${borrowed} borrowed`;
     if (filteredBooks.length === 0) {
         emptyState.classList.remove("hidden");
         return;
