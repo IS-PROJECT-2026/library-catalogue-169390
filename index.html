@@ -7,10 +7,98 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <main>
-        <h1>Library Catalogue</h1>
-    </main>
 
-    <script src="js/app.js"></script>
+<header class="site-header">
+    <div class="container nav">
+        <a href="#" class="logo">📚 Library Catalogue</a>
+
+        <nav>
+            <a href="#catalogue">Catalogue</a>
+            <a href="#about">About</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <section class="hero">
+        <div class="container">
+            <p class="eyebrow">DIGITAL LIBRARY</p>
+            <h1>Find your next<br>great read.</h1>
+            <p class="hero-text">
+                Browse our collection of books and discover something worth reading.
+            </p>
+
+            <a href="#catalogue" class="hero-button">
+                Browse Catalogue →
+            </a>
+        </div>
+    </section>
+
+    <section id="catalogue" class="catalogue-section">
+        <div class="container">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">OUR COLLECTION</p>
+                    <h2>Browse Books</h2>
+                </div>
+
+                <span id="book-count" class="book-count"></span>
+            </div>
+
+            <div class="controls">
+
+                <div class="search-box">
+                    <span>🔍</span>
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search by title or author..."
+                    >
+                </div>
+
+                <div class="filters">
+                    <button class="filter active" data-category="All">All</button>
+                    <button class="filter" data-category="Fiction">Fiction</button>
+                    <button class="filter" data-category="Technology">Technology</button>
+                    <button class="filter" data-category="Science">Science</button>
+                    <button class="filter" data-category="History">History</button>
+                </div>
+
+            </div>
+
+            <div id="book-grid" class="book-grid"></div>
+
+            <div id="empty-state" class="empty-state hidden">
+                <div>📖</div>
+                <h3>No books found</h3>
+                <p>Try a different search or category.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <p class="eyebrow">ABOUT THE CATALOGUE</p>
+            <h2>A simple way to explore our library.</h2>
+            <p>
+                The Library Catalogue helps readers discover books,
+                search the collection, and check availability before borrowing.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Library Catalogue</p>
+        <p>Built with HTML, CSS & JavaScript</p>
+    </div>
+</footer>
+
+<script src="js/app.js"></script>
 </body>
 </html>
